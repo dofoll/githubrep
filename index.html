@@ -1,12 +1,24 @@
+<!-- templates/index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GITHUB PROJECT WORK DEMO</title>
+    <title>Baby Care Products</title>
 </head>
 <body>
-  <h1>github repo work</h1>  
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi velit amet repellendus quod eligendi eius totam veniam harum, dolorum nobis natus tempore saepe fugiat et assumenda voluptates? Labore, unde ad. Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum accusamus sunt in molestiae expedita ipsa animi vero! Inventore nulla nisi suscipit harum, non ad obcaecati minima illo quos sint exercitationem.</p>
+    <h1>Welcome to our Baby Care Products Store</h1>
+    
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - ${{ product.price }}
+                <a href="{{ url_for('add_to_cart', product_id=product.id) }}">Add to Cart</a>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{{ url_for('view_cart') }}">View Cart</a>
 </body>
 </html>
